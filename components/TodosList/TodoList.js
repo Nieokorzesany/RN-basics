@@ -1,18 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import Todo from '../Todo/Todo'
 
-export default function TodosList({list,deleteItem}) {
+const TodosList=({list,deleteItem})=> {
   return (
     <View style={styles.todoContainer}>
-      {list.map((item,i) =><Todo key={i} todo={item.item} id={item.id} deleteItem={deleteItem}/>)}
+      <FlatList
+      keyExtractor={(item,i)=>item.key} 
+      data={list} 
+      renderItem={itemData =>(<Todo  todo={itemData.item} deleteItem={deleteItem}/>)} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   todoContainer: {
-    marginTop:20
   },
 });
+
+export default TodosList;

@@ -1,15 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { AntDesign} from '@expo/vector-icons';
 
-export default function Todo({todo,deleteItem,id}) {
+const Todo =({todo ,deleteItem})=> {
   return (
     <View style={styles.todo}>
-      <Text style={styles.text}>{todo}</Text>
-      <AntDesign name='closecircleo' size={32} color='black' onPress={()=>deleteItem(id)}/>
+      <Text style={styles.text}>{todo.item}</Text>
+      <AntDesign name='closecircleo' size={40} color='black' onPress={()=>deleteItem(todo.id)}/>
     </View>
   );
 }
+
+export default Todo;
 
 const styles = StyleSheet.create({
   todo: {
